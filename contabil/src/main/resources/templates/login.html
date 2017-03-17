@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymelyeaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="LayoutPadrao">
+	<head>
+	<title>Cobrança</title>
+</head>
+
+	<section layout:fragment="conteudo">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
+				<div th:if="${param.error}">
+					<div class="alert alert-danger"
+					   th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message} + ': UsuÃ¡rio e/ou invÃ¡lidos!'">Usuário e/ou inválidos!</div>
+				</div>
+
+				<div th:if="${param.logout}">
+					<div class="alert alert-info">Até logo!</div>
+				</div>
+
+				<div class="panel panel-info">
+					<div class="panel-heading">
+				    	<h3 class="panel-title">ENTRE</h3>
+				  	</div>
+					<div class="panel-body">
+						<form th:action="@{/login}" method="post">
+							<div class="form-group">
+								<input name="username" class="form-control" placeholder="Usuário"/>
+							</div>
+
+							<div class="form-group">
+								<input type="password" name="password" class="form-control" placeholder="Senha"/>
+							</div>
+
+							<div class="form-group">
+								<button class="btn btn-primary btn-block">Entrar</button>
+							</div>
+
+							<div class="form-group">
+								<input type="checkbox" id="remember-me" name="remember-me" />
+								<label for="remember-me">Lembrar?</label>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+</html>
