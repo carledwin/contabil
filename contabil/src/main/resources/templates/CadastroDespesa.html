@@ -4,11 +4,11 @@
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 		layout:decorator="LayoutPadrao">
 	<head>
-		<title>Cadastro de título</title>
+		<title>Cadastro de despesa</title>
 	</head>
 
 	<section layout:fragment="conteudo">
-		<form class="form-horizontal" method="post" th:action="@{/titulos}" th:object="${titulo}">
+		<form class="form-horizontal" method="post" th:action="@{/despesas}" th:object="${despesa}">
 		
 			<div layout:include="Mensagens"></div>	
 			<div layout:include="MensagensErro"></div>
@@ -16,22 +16,14 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="clearfix">
-						<h1 class="panel-title cw-titulo-panel">Novo título</h1>
-						<a class="btn btn-link cw-link-panel" th:href="@{/titulos}">Voltar para pesquisa</a>
+						<h1 class="panel-title cw-despesa-panel">Nova despesa</h1>
+						<a class="btn btn-link cw-link-panel" th:href="@{/despesas}">Voltar para pesquisa</a>
 					</div>
 				</div>
 			
 				<div class="panel-body">
-				
-				<!-- 
-					<div class="form-group">
-						<label for="codigo" class="col-sm-2 control-label">Código</label>
-						<div class="col-sm-1">
-							<input th:field="*{codigo}" id="codigo" type="text" class="form-control" readonly="readonly" />
-						</div>
-					</div>
-				 -->
-				 <input type="hidden" th:field="*{codigo}" />
+			
+				 <input type="hidden" th:field="*{id}" />
 				 
 					<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
 						<label for="descricao" class="col-sm-2 control-label">Descrição</label>
@@ -56,12 +48,23 @@
 					
 					<div class="form-group">
 						<label for="status" class="col-sm-2 control-label">Status</label>
-						<div class="col-sm-2">
+						<div class="col-sm-4">
 							<select th:field="*{status}" id="status" class="form-control">
-								<option th:each="status : ${statusTituloList}" th:value="${status}" th:text="${status.descricao}"></option>
+								<option th:each="status : ${statusDespesaEnumList}" th:value="${status}" th:text="${status}"></option>
 							</select>
 						</div>
 					</div>
+					
+					<div class="form-group">
+						<label for="tipo" class="col-sm-2 control-label">Tipo</label>
+						<div class="col-sm-4">
+							<select th:field="*{tipo}" id="tipo" class="form-control">
+								<option th:each="tipo : ${tipoDespesaEnumList}" th:value="${tipo}" th:text="${tipo}"></option>
+							</select>
+						</div>
+					</div>
+					
+					
 					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm10">

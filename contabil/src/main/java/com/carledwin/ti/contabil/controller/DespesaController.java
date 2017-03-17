@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.carledwin.ti.contabil.model.Despesa;
 import com.carledwin.ti.contabil.model.StatusDespesaEnum;
+import com.carledwin.ti.contabil.model.TipoDespesaEnum;
 import com.carledwin.ti.contabil.repository.filter.DespesaFilter;
 import com.carledwin.ti.contabil.service.DespesaService;
 
@@ -45,20 +46,20 @@ public class DespesaController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/{codigo}/pagar", method = RequestMethod.PUT)
-	public @ResponseBody String pagar(@PathVariable Long codigo){
-		return service.pagar(codigo);
+	@RequestMapping(value="/{id}/pagar", method = RequestMethod.PUT)
+	public @ResponseBody String pagar(@PathVariable Long id){
+		return service.pagar(id);
 	}
 	
-	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
-	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes){
-		service.delete(codigo);
+	@RequestMapping(value="{id}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long id, RedirectAttributes attributes){
+		service.delete(id);
 		attributes.addFlashAttribute(VAR_MENSAGEM, MSG_EXCLUSAO_SUCESSO);
 		return REDIRECT_DESPESAS;
 	}
 	
-	@RequestMapping("{codigo}")
-	public ModelAndView editar(@PathVariable("codigo") Despesa despesa){
+	@RequestMapping("{id}")
+	public ModelAndView editar(@PathVariable("id") Despesa despesa){
 		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(despesa);
 		return mv;
@@ -89,5 +90,10 @@ public class DespesaController {
 	@ModelAttribute
 	public List<StatusDespesaEnum> statusDespesa(){
 		return Arrays.asList(StatusDespesaEnum.values());
+	}
+	
+	@ModelAttribute
+	public List<TipoDespesaEnum> tipoDespesa(){
+		return Arrays.asList(TipoDespesaEnum.values());
 	}
 }
