@@ -58,18 +58,16 @@
 									<td class="text-center" th:text="${{despesa.dataPagamento}}"></td>
 									<td class="text-right" th:text="|R$ ${{despesa.valor}}"></td>
 									<td class="text-right" th:text="|R$ ${{despesa.valorPago}}"></td>
-									<td class="text-center" th:attr="data-role=${despesa.id}">
-										<span class="label" th:text="${despesa.status}" th:classappend="${despesa.paga ? 'label-danger' : 'label-success'}">Success</span>
-									</td>
+									<td class="text-right" th:text="|R$ ${{despesa.status}}"></td>
 									<td class="text-right" th:text="|R$ ${{despesa.tipo}}"></td>
 									<td class="text-center">
-										<a class="btn btn-link btn-xs" th:href="@{/despesas/{id}(id=${despesa.id})}" title="Editar" rel="tooltip" data-placement="top">
+										<a class="btn btn-link btn-xs" th:href="@{/despesas/{id}(codigo=${despesa.id})}" title="Editar" rel="tooltip" data-placement="top">
 											<span class="glyphicon glyphicon-pencil"></span>
 										</a>
-										<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#dialogoConfirmacaoExclusaoModal" th:attr="data-id=${despesa.id}, data-descricao=${despesa.descricao}" title="Excluir" rel="tooltip" data-placement="top">
+										<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#dialogoConfirmacaoExclusaoModal" th:attr="data-codigo=${despesa.id}, data-descricao=${despesa.descricao}" title="Excluir" rel="tooltip" data-placement="top">
 											<span class="glyphicon glyphicon-remove"></span>
 										</a>
-										<a class="btn btn-link btn-xs js-atualizar-status" th:attr="data-id=${despesa.id}" th:href="@{/despesas/{id}/receber(id=${despesa.id})}" th:if="${despesa.paga}" title="Pagar" rel="tooltip" data-placement="top">
+										<a class="btn btn-link btn-xs js-atualizar-status" th:attr="data-codigo=${despesa.id}" th:href="@{/despesas/{id}/receber(id=${despesa.id})}" title="Pagar" rel="tooltip" data-placement="top">
 											<span class="glyphicon glyphicon-check"></span>
 										</a>
 									</td>

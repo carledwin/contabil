@@ -33,7 +33,7 @@ public class DespesaController {
 	private static final String URL_NOVA = "/nova";
 	public static final String URL_DESPESAS = "/despesas";
 	private static final String VAR_MENSAGEM = "mensagem";
-	private static final String VAR_DESPESAS = "depesas";
+	private static final String VAR_DESPESAS = "despesas";
 	
 	@Autowired
 	private DespesaService service;

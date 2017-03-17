@@ -50,7 +50,7 @@
 						<label for="status" class="col-sm-2 control-label">Status</label>
 						<div class="col-sm-4">
 							<select th:field="*{status}" id="status" class="form-control">
-								<option th:each="status : ${statusDespesaEnumList}" th:value="${status}" th:text="${status}"></option>
+								<option th:each="status : ${statusDespesaEnumList}" th:value="${status}" th:text="${status.descricao}"></option>
 							</select>
 						</div>
 					</div>
@@ -59,7 +59,7 @@
 						<label for="tipo" class="col-sm-2 control-label">Tipo</label>
 						<div class="col-sm-4">
 							<select th:field="*{tipo}" id="tipo" class="form-control">
-								<option th:each="tipo : ${tipoDespesaEnumList}" th:value="${tipo}" th:text="${tipo}"></option>
+								<option th:each="tipo : ${tipoDespesaEnumList}" th:value="${tipo}" th:text="${tipo.descricao}"></option>
 							</select>
 						</div>
 					</div>
