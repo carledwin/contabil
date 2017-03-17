@@ -27,7 +27,7 @@ public class ContabilApplication {
 	public static class MvcConfig extends WebMvcConfigurerAdapter{
 		@Override
 		public void addViewControllers(ViewControllerRegistry registry) {
-			registry.addRedirectViewController("/", "/titulos");
+			registry.addRedirectViewController("/", "/despesas");
 		}
 	}
 }
